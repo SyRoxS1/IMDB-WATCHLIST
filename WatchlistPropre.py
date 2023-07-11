@@ -20,9 +20,7 @@ with open("WATCHLIST.csv", mode="r", encoding="utf8") as OpenFile:
         Rating.append(row[8])
         ReleaseDate.append(row[13])
         Runtime.append(row[9])
-        if GenderToSearch in row[11]:
-            print(row[5])
-            count = count + 1
+        
     print(count)
 def LongestWatch():
     Total = 0 
@@ -50,7 +48,23 @@ def StatGENDER():
         PercentGenders[Genders] = round(GenderSeparated.count(Genders)/len(GenderSeparated)*100,2)
         print(PercentGenders)
 
-    
-
+def SearchGender():
+    with open("WATCHLIST.csv", mode="r", encoding="utf8") as OpenFile:
+        FileContent = csv.reader(OpenFile)
+        next(FileContent)  # Supprime la première ligne car pas de films présents dessus
+        for row in FileContent:
+            if GenderToSearch in row[11]:
+                print(row[5])
+                count = count + 1
+def ListAllFilms():
+    with open("WATCHLIST.csv", mode="r", encoding="utf8") as OpenFile:
+        FileContent = csv.reader(OpenFile)
+        next(FileContent)  # Supprime la première ligne car pas de films présents dessus
+        with open("AllFilms.txt", mode="w", encoding="utf8") as AllFilms:
+            for row in FileContent:
+                AllFilms.write(row[5]+"\n")
+                
+            
         
-    
+
+ListAllFilms()
