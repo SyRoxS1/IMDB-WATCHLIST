@@ -1,11 +1,14 @@
 import re 
 import csv
 
+
 DateOfInsertInList = []
 Rating = [] #8
 ReleaseDate = [] #13
 Genres = []
 Runtime = [] #9
+count = 0
+GenderToSearch = "Horror"
 
 with open("WATCHLIST.csv", mode="r", encoding="utf8") as OpenFile:
     FileContent = csv.reader(OpenFile)
@@ -17,7 +20,10 @@ with open("WATCHLIST.csv", mode="r", encoding="utf8") as OpenFile:
         Rating.append(row[8])
         ReleaseDate.append(row[13])
         Runtime.append(row[9])
-
+        if GenderToSearch in row[11]:
+            print(row[5])
+            count = count + 1
+    print(count)
 def LongestWatch():
     Total = 0 
     Longest = 0
@@ -48,6 +54,3 @@ def StatGENDER():
 
         
     
-
-StatGENDER()
-LongestWatch()
