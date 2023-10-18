@@ -21,7 +21,7 @@ with open("WATCHLIST.csv", mode="r", encoding="utf8") as OpenFile:
         ReleaseDate.append(row[13])
         Runtime.append(row[9])
         
-    print(count)
+    
 def LongestWatch():
     Total = 0 
     Longest = 0
@@ -52,10 +52,13 @@ def SearchGender():
     with open("WATCHLIST.csv", mode="r", encoding="utf8") as OpenFile:
         FileContent = csv.reader(OpenFile)
         next(FileContent)  # Supprime la première ligne car pas de films présents dessus
+        count = 0
         for row in FileContent:
             if GenderToSearch in row[11]:
                 print(row[5])
                 count = count + 1
+        print("Number of the movie type :", count)
+
 def ListAllFilms():
     with open("WATCHLIST.csv", mode="r", encoding="utf8") as OpenFile:
         FileContent = csv.reader(OpenFile)
@@ -67,4 +70,4 @@ def ListAllFilms():
             
         
 
-ListAllFilms()
+SearchGender()
